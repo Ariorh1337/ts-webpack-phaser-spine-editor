@@ -1,0 +1,224 @@
+{
+    "skeleton": {
+        "hash": "JH0rw4ElfU/OGJfx51Q2V4Ej6ho",
+        "spine": "3.8.72",
+        "x": -137,
+        "y": -48,
+        "width": 275,
+        "height": 97
+    },
+    "bones": [
+        { "name": "root" },
+        { "name": "bone", "parent": "root" },
+        { "name": "bone_normal", "parent": "bone", "skin": true },
+        { "name": "bone_over", "parent": "bone", "skin": true },
+        { "name": "bone_press", "parent": "bone", "skin": true },
+        { "name": "bone_disabled", "parent": "bone", "skin": true },
+        { "name": "bone_effect", "parent": "bone", "skin": true },
+        { "name": "bone_text", "parent": "bone" }
+    ],
+    "slots": [
+        {
+            "name": "btn-disabled",
+            "bone": "bone_disabled",
+            "attachment": "btn-disabled"
+        },
+        { "name": "btn-over", "bone": "bone_over", "attachment": "btn-over" },
+        {
+            "name": "btn-press",
+            "bone": "bone_press",
+            "attachment": "btn-press"
+        },
+        { "name": "btn", "bone": "bone_normal", "attachment": "btn" },
+        { "name": "effect", "bone": "bone_effect", "attachment": "effect" }
+    ],
+    "skins": [
+        {
+            "name": "default",
+            "attachments": {
+                "btn-disabled": {
+                    "btn-disabled": {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "width": 275,
+                        "height": 97
+                    }
+                },
+                "effect": {
+                    "effect": { "y": 0.5, "width": 528, "height": 39 }
+                },
+                "btn-press": {
+                    "btn-press": { "x": 0.5, "width": 275, "height": 96 }
+                },
+                "btn": {
+                    "btn": { "x": 0.5, "y": 0.5, "width": 275, "height": 97 }
+                },
+                "btn-over": {
+                    "btn-over": {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "width": 275,
+                        "height": 97
+                    }
+                }
+            }
+        },
+        {
+            "name": "disabled",
+            "bones": ["bone_disabled"]
+        },
+        {
+            "name": "effect",
+            "bones": ["bone_effect"]
+        },
+        {
+            "name": "normal",
+            "bones": ["bone_normal"]
+        },
+        {
+            "name": "over",
+            "bones": ["bone_over"]
+        },
+        {
+            "name": "press",
+            "bones": ["bone_press"]
+        }
+    ],
+    "events": {
+        "change-skin": {}
+    },
+    "animations": {
+        "blink": {
+            "slots": {
+                "effect": {
+                    "color": [
+                        { "color": "ffffff00" },
+                        {
+                            "time": 0.0333,
+                            "color": "ffffffff",
+                            "curve": "stepped"
+                        },
+                        { "time": 0.1667, "color": "ffffffff" },
+                        { "time": 0.2, "color": "ffffff00" }
+                    ],
+                    "attachment": [
+                        { "name": "effect" },
+                        { "time": 0.2, "name": "effect" }
+                    ]
+                }
+            },
+            "bones": {
+                "bone_effect": {
+                    "translate": [{ "y": 32 }, { "time": 0.2, "y": -31.5 }],
+                    "scale": [
+                        { "x": 0.375 },
+                        { "time": 0.1, "x": 0.475 },
+                        { "time": 0.2, "x": 0.375 }
+                    ]
+                }
+            },
+            "events": [
+                { "name": "change-skin", "string": "normal,effect" },
+                { "time": 0.2, "name": "change-skin", "string": "normal" }
+            ]
+        },
+        "chill": {
+            "bones": {
+                "bone_text": {
+                    "translate": [
+                        {},
+                        { "time": 0.3333, "y": 10 },
+                        { "time": 0.6667, "y": -10 },
+                        { "time": 1 }
+                    ]
+                }
+            }
+        },
+        "out": {
+            "slots": {
+                "btn": {
+                    "color": [
+                        { "color": "ffffff00" },
+                        { "time": 0.2, "color": "ffffffff" }
+                    ],
+                    "attachment": [
+                        { "name": "btn" },
+                        { "time": 0.2, "name": "btn" }
+                    ]
+                },
+                "btn-over": {
+                    "color": [
+                        { "color": "ffffffff" },
+                        { "time": 0.2, "color": "ffffff00" }
+                    ],
+                    "attachment": [
+                        { "name": "btn-over" },
+                        { "time": 0.2, "name": "btn-over" }
+                    ]
+                }
+            },
+            "events": [
+                { "name": "change-skin", "string": "over,normal" },
+                { "time": 0.2, "name": "change-skin", "string": "normal" }
+            ]
+        },
+        "over": {
+            "slots": {
+                "btn": {
+                    "color": [
+                        { "color": "ffffffff" },
+                        { "time": 0.2, "color": "ffffff00" }
+                    ],
+                    "attachment": [
+                        { "name": "btn" },
+                        { "time": 0.2, "name": "btn" }
+                    ]
+                },
+                "btn-over": {
+                    "color": [
+                        { "color": "ffffff00" },
+                        { "time": 0.2, "color": "ffffffff" }
+                    ],
+                    "attachment": [
+                        { "name": "btn-over" },
+                        { "time": 0.2, "name": "btn-over" }
+                    ]
+                }
+            },
+            "events": [
+                { "name": "change-skin", "string": "normal,over" },
+                { "time": 0.2, "name": "change-skin", "string": "over" }
+            ]
+        },
+        "press": {
+            "slots": {
+                "btn": {
+                    "color": [
+                        { "color": "ffffffff" },
+                        { "time": 0.1, "color": "ffffff00" },
+                        { "time": 0.2, "color": "ffffffff" }
+                    ],
+                    "attachment": [
+                        { "name": "btn" },
+                        { "time": 0.2, "name": "btn" }
+                    ]
+                },
+                "btn-press": {
+                    "color": [
+                        { "color": "ffffff00" },
+                        { "time": 0.1, "color": "ffffffff" },
+                        { "time": 0.2, "color": "ffffff00" }
+                    ],
+                    "attachment": [
+                        { "name": "btn-press" },
+                        { "time": 0.2, "name": "btn-press" }
+                    ]
+                }
+            },
+            "events": [
+                { "name": "change-skin", "string": "normal,press" },
+                { "time": 0.2, "name": "change-skin", "string": "normal" }
+            ]
+        }
+    }
+}

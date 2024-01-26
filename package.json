@@ -1,0 +1,36 @@
+{
+	"dependencies": {
+		"eslint": "^8.56.0",
+		"phaser": "^3.70.0",
+		"worker-loader": "^3.0.8"
+	},
+	"devDependencies": {
+		"ajv": "^8.12.0",
+		"copy-webpack-plugin": "^12.0.2",
+		"html-webpack-plugin": "^5.6.0",
+		"javascript-obfuscator": "^4.1.0",
+		"phaser-asset-pack-hashing": "^1.0.6",
+		"phasereditor2d-launcher": "^3.66.0",
+		"prettier": "^3.2.4",
+		"rimraf": "^5.0.5",
+		"serve": "^14.2.1",
+		"ts-loader": "^9.5.1",
+		"typescript": "^5.3.3",
+		"webpack": "^5.90.0",
+		"webpack-cli": "^5.1.4",
+		"webpack-dev-server": "^4.15.1",
+		"webpack-merge": "^5.10.0",
+		"webpack-obfuscator": "^3.5.1",
+		"workbox-webpack-plugin": "^7.0.0"
+	},
+	"engines": {
+		"node": ">=12"
+	},
+	"main": "index.js",
+	"name": "phaser3-template",
+	"scripts": {
+		"build": "rimraf dist && webpack --config webpack/webpack.prod.js",
+		"local": "webpack serve --config webpack/webpack.dev.js"
+	},
+	"version": "0.0.1"
+}

@@ -1,0 +1,41 @@
+
+button.png
+size: 821,132
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+btn
+  rotate: false
+  xy: 2, 2
+  size: 271, 94
+  orig: 275, 97
+  offset: 2, 1
+  index: -1
+btn-disabled
+  rotate: false
+  xy: 2, 2
+  size: 271, 94
+  orig: 275, 97
+  offset: 2, 1
+  index: -1
+btn-over
+  rotate: false
+  xy: 275, 2
+  size: 271, 94
+  orig: 275, 97
+  offset: 2, 1
+  index: -1
+btn-press
+  rotate: false
+  xy: 548, 36
+  size: 271, 94
+  orig: 275, 96
+  offset: 2, 1
+  index: -1
+effect
+  rotate: false
+  xy: 2, 98
+  size: 519, 32
+  orig: 528, 39
+  offset: 4, 3
+  index: -1
