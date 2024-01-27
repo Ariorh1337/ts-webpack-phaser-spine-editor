@@ -31,7 +31,13 @@ export default class Boot extends Phaser.Scene {
             const formatedKey = temp.join(".");
 
             const buffer = this.cache.binary.entries.get(key);
-            const blob = btoa(String.fromCharCode(...new Uint8Array(buffer)));
+
+            const uint8Array = new Uint8Array(buffer);
+            let binary = "";
+            for (let i = 0; i < uint8Array.byteLength; i++) {
+                binary += String.fromCharCode(uint8Array[i]);
+            }
+            const blob = btoa(binary);
 
             const fontface = new FontFace(
                 formatedKey,
