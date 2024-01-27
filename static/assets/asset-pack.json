@@ -1,0 +1,105 @@
+{
+    "section1": {
+        "files": [
+            {
+                "key": "atlas",
+                "path": "assets/multiatlas/game",
+                "type": "multiatlas",
+                "url": "assets/multiatlas/game/atlas.json"
+            },
+            {
+                "key": "background-tile",
+                "type": "image",
+                "url": "assets/image/ui/background-tile.png"
+            },
+            {
+                "atlasURL": "assets/atlas/blue.json",
+                "key": "blue",
+                "textureURL": "assets/atlas/blue.png",
+                "type": "aseprite"
+            },
+            {
+                "key": "click",
+                "type": "audio",
+                "url": [
+                    "assets/audio/button/click.mp3"
+                ]
+            },
+            {
+                "key": "click_1",
+                "type": "audio",
+                "url": [
+                    "assets/audio/button/click.wav"
+                ]
+            },
+            {
+                "key": "coin",
+                "type": "image",
+                "url": "assets/image/ui/coin.png"
+            },
+            {
+                "key": "fire",
+                "type": "image",
+                "url": "assets/image/ui/fire.png"
+            },
+            {
+                "key": "goblins",
+                "type": "spineJson",
+                "url": "assets/spine/goblins/goblins-pro.json"
+            },
+            {
+                "key": "goblins-atlas",
+                "type": "spineAtlas",
+                "url": "assets/spine/goblins/goblins-pma.atlas"
+            },
+            {
+                "key": "hand",
+                "type": "image",
+                "url": "assets/image/ui/hand.png"
+            },
+            {
+                "atlasURL": "assets/aseprite/game/poof.json",
+                "key": "poof",
+                "textureURL": "assets/aseprite/game/poof.png",
+                "type": "aseprite"
+            },
+            {
+                "fontDataURL": "assets/bitmap/test.xml",
+                "key": "golden_test_font",
+                "textureURL": "assets/bitmap/test.png",
+                "type": "bitmapFont"
+            },
+            {
+                "key": "warning",
+                "type": "image",
+                "url": "assets/image/ui/warning.png"
+            },
+            {
+                "frameConfig": {
+                    "endFrame": -1,
+                    "frameHeight": 32,
+                    "frameWidth": 32,
+                    "margin": 0,
+                    "spacing": 0,
+                    "startFrame": 0
+                },
+                "key": "yellow",
+                "type": "spritesheet",
+                "url": "assets/aseprite/yellow.png"
+            },
+            {
+                "atlasURL": "assets/aseprite/yellow.json",
+                "key": "yellow_1",
+                "textureURL": "assets/aseprite/yellow.png",
+                "type": "aseprite"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false
+    }
+}

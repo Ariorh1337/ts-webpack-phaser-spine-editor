@@ -1,186 +1,145 @@
-import { EngineWorker, HEIGHT, WIDTH, X, Y, i18n } from "game/globals";
-import Button from "util/Button";
-import List from "util/List";
-import { ScrollableContainer } from "util/ScrollableContainer";
-import Text from "util/Text";
-import Trail from "util/Trail";
+// You can write more code here
+
+/* START OF COMPILED CODE */
+
+import Phaser from "phaser";
+import { SkinsAndAnimationBoundsProvider } from "@esotericsoftware/spine-phaser";
+import { SpineGameObject } from "@esotericsoftware/spine-phaser";
+import { OnAwakeScript } from "@phasereditor2d/scripts-core";
+import SetProperty from "../script-nodes/SetProperty";
+import TweenPropertyScript from "../script-nodes/TweenPropertyScript";
+import { OnEventScript } from "@phasereditor2d/scripts-core";
+import ApplyInteractivity from "../script-nodes/ApplyInteractivity";
+/* START-USER-IMPORTS */
+/* END-USER-IMPORTS */
 
 export default class Example extends Phaser.Scene {
-    constructor() {
-        super({ key: "Example" });
+
+	constructor() {
+		super("Example");
+
+		/* START-USER-CTR-CODE */
+        // Write your code here.
+        /* END-USER-CTR-CODE */
+	}
+
+	editorCreate(): void {
+
+		// snippets
+		this.anims.createFromAseprite("poof");
+
+		// background_tile
+		this.add.tileSprite(960, 540, 1920, 1390, "background-tile");
+
+		// font_31_png
+		this.add.image(960, 200, "atlas", "font-31.png");
+
+		// poof
+		const poof = this.add.sprite(960, 320, "poof", "0");
+		poof.play({"key":"poof","repeat":-1});
+
+		// goblin
+		const goblin = this.add.spine(827, 338, "goblins", "goblins-atlas", new SkinsAndAnimationBoundsProvider("walk", ["goblin"]));
+		goblin.skeleton.setSkinByName("goblin");
+		goblin.animationStateData.setMix("walk", "walk", 0);
+		goblin.scaleX = 0.5;
+		goblin.scaleY = 0.5;
+
+		// onAwakeScript
+		const onAwakeScript = new OnAwakeScript(goblin);
+
+		// setProperty_2
+		const setProperty_2 = new SetProperty(onAwakeScript);
+
+		// hand
+		const hand = this.add.image(1024, 149, "hand");
+		hand.angle = 50;
+		hand.setOrigin(0.5, 1);
+
+		// tween_y
+		const tween_y = new TweenPropertyScript(hand);
+
+		// tween_x
+		const tween_x = new TweenPropertyScript(hand);
+
+		// setProperty_1
+		const setProperty_1 = new SetProperty(tween_x);
+
+		// warning
+		const warning = this.add.image(961, 448, "warning");
+
+		// onEventScript
+		const onEventScript = new OnEventScript(warning);
+
+		// tween_scale
+		const tween_scale = new TweenPropertyScript(onEventScript);
+
+		// setProperty
+		const setProperty = new SetProperty(onEventScript);
+
+		// applyInteractivity
+		new ApplyInteractivity(warning);
+
+		// bitmaptext_1
+		const bitmaptext_1 = this.add.bitmapText(763, 438, "golden_test_font", "321321");
+		bitmaptext_1.setOrigin(0.5, 0.5);
+		bitmaptext_1.text = "321321";
+		bitmaptext_1.fontSize = 30;
+		bitmaptext_1.align = 1;
+		bitmaptext_1.maxWidth = 3000;
+
+		// setProperty_2 (prefab fields)
+		setProperty_2.path = "animationState";
+		setProperty_2.property = "setAnimation";
+		setProperty_2.value = "0, walk, true";
+
+		// tween_y (prefab fields)
+		tween_y.property = "y";
+		tween_y.value = "190";
+		tween_y.duration = 500;
+		tween_y.yoyo = true;
+		tween_y.repeat = 1000;
+
+		// tween_x (prefab fields)
+		tween_x.property = "x";
+		tween_x.value = "975";
+		tween_x.duration = 500;
+		tween_x.yoyo = true;
+		tween_x.repeat = 1000;
+
+		// setProperty_1 (prefab fields)
+		setProperty_1.property = "scale";
+		setProperty_1.value = "+=0.1";
+
+		// onEventScript (prefab fields)
+		onEventScript.eventName = "pointerdown";
+
+		// tween_scale (prefab fields)
+		tween_scale.alive = false;
+		tween_scale.property = "scale";
+		tween_scale.value = "2";
+		tween_scale.duration = 250;
+		tween_scale.yoyo = true;
+		tween_scale.onCompleteExecute = false;
+
+		// setProperty (prefab fields)
+		setProperty.property = "tint";
+		setProperty.value = "0x00ff00";
+
+		this.events.emit("scene-awake");
+	}
+
+	/* START-USER-CODE */
+
+    // Write your code here
+
+    create() {
+        this.editorCreate();
     }
 
-    public create() {
-        // Create normal image
-        this.add.image(X(0.5), Y(0.5), "ui-background-tile");
-
-        // Create atlas image
-        this.add.image(X(0.5), 200, `game-atlas`, `font-9.png`);
-
-        // Create aseprite animation
-        this.add
-            .sprite(X(0.5), Y(0.5) - 220, "game-poof")
-            .play({ key: "poof", repeat: -1 });
-
-        // Create spine animation
-        this.add.spine(X(0.15), Y(0.4), "game-coin").play("animation", true);
-
-        // Create tween animation
-        this.tweens.add({
-            targets: this.add.image(X(0.5), Y(0.5) + 200, "ui-hand"),
-            y: "+=15",
-            duration: 500,
-            repeat: -1,
-            yoyo: true,
-        });
-
-        // Create button
-        {
-            const frame = this.add.image(X(0.5), Y(0.5) + 290, "ui-warning");
-
-            const button = new Button(frame);
-
-            // Adds a default tints to the button (over, out, down, up)
-            button.defaults(frame);
-
-            button.click((btn, elm) => {
-                console.log("Clicked", btn, elm);
-            });
-        }
-
-        // Create bitmap text
-        this.add.bitmapText(
-            X(0.5) + 100,
-            Y(0.5),
-            "golden_test_font",
-            i18n("test")
-        );
-
-        // Create normal text
-        const text = new Text(this, X(0.5) - 100, Y(0.5), i18n("test"), {
-            fontFamily: "uni-sans-heavy",
-            fontSize: 32,
-            color: "#000000",
-        });
-        text.setFillGradient(
-            [
-                { color: "#ff0000", percent: 0 },
-                { color: "#0000ff", percent: 1 },
-            ],
-            false,
-            45
-        );
-        text.setScale(1.5);
-        text.setWidthLimit(200);
-
-        this.tweens.addCounter({
-            from: 0,
-            to: 10,
-            duration: 5000,
-            repeat: -1,
-            yoyo: true,
-            onUpdate: (tween) => {
-                text.setText(
-                    i18n("test") +
-                        new Array(Math.floor(tween.getValue()))
-                            .fill("A")
-                            .join("")
-                );
-            },
-        });
-
-        // Create ScrollableContainer
-        new ScrollableContainer(this, X(0.5), Y(0.75), 200, 200, [
-            this.add.text(
-                0,
-                0,
-                new List(100, () => new Array(30).fill("0").join())
-            ),
-        ]).higlightInputRect(true);
-
-        // Create engine worker
-        const worker = new EngineWorker();
-        worker.onmessage = (event: any) => {
-            console.log("Parent", event);
-        };
-        worker.postMessage({
-            type: "start",
-            data: "Some Test Data",
-        });
-
-        // Create trail
-        this.createTrail();
-
-        // Create FPS
-        this.create_fps();
-    }
-
-    private createTrail() {
-        const points = {
-            start: new Phaser.Math.Vector2(99, 1154),
-            control1: new Phaser.Math.Vector2(250, 1170),
-            control2: new Phaser.Math.Vector2(350, 1065),
-            end: new Phaser.Math.Vector2(215, 930),
-        };
-
-        Object.values(points).forEach((point: Phaser.Math.Vector2) => {
-            const circle = this.add
-                .circle(point.x, point.y, 10, Phaser.Math.Between(0, 0xffffff))
-                .setInteractive();
-
-            this.input.setDraggable(circle);
-
-            circle.on(
-                "drag",
-                (_: Phaser.Input.Pointer, dragX: number, dragY: number) => {
-                    circle.x = dragX;
-                    circle.y = dragY;
-                    point.x = dragX;
-                    point.y = dragY;
-                }
-            );
-        });
-
-        const brush = this.add
-            .image(0, 0, "ui-fire")
-            .setAlpha(0.9)
-            .setVisible(false);
-
-        const animation = new Trail(this, brush, WIDTH, HEIGHT);
-
-        new Button(
-            this.add.rectangle(
-                X(0.25),
-                Y(0.9),
-                WIDTH * 0.1,
-                HEIGHT * 0.05,
-                0x000000,
-                0.75
-            )
-        ).click(() => {
-            const curve = new Phaser.Curves.CubicBezier(
-                points.start,
-                points.control1,
-                points.control2,
-                points.end
-            );
-
-            animation.play(500, curve);
-
-            console.log(points);
-        });
-    }
-
-    private create_fps() {
-        const text = this.add
-            .bitmapText(30, 30, "golden_test_font")
-            .setOrigin(0);
-
-        const update = () => {
-            text.setText(`FPS: ${Math.trunc(this.game.loop.actualFps)}`);
-            this.time.delayedCall(1000, update);
-        };
-
-        update();
-    }
+    /* END-USER-CODE */
 }
+
+/* END OF COMPILED CODE */
+
+// You can write more code here

@@ -1,0 +1,62 @@
+{
+	"displayList": [
+		{
+			"components": [],
+			"id": "e93a8e57-fc0f-4d4b-b171-9922d5ddf8e9",
+			"label": "scriptnode_1",
+			"list": [],
+			"type": "ScriptNode"
+		}
+	],
+	"id": "51c79514-c69c-418c-b5d3-9237c9e7ca15",
+	"meta": {
+		"app": "Phaser Editor 2D - Scene Editor",
+		"contentType": "phasereditor2d.core.scene.SceneContentType",
+		"url": "https://phasereditor2d.com",
+		"version": 3
+	},
+	"plainObjects": [],
+	"prefabProperties": [
+		{
+			"customDefinition": false,
+			"defValue": "",
+			"label": "Path",
+			"name": "path",
+			"tooltip": "In case required property is a nested object, use dot notation to specify the path to the property. For example, to set the 'x' property of the 'body' object, use 'body.x'.",
+			"type": {
+				"id": "string"
+			}
+		},
+		{
+			"customDefinition": false,
+			"defValue": "",
+			"label": "Property",
+			"name": "property",
+			"tooltip": "",
+			"type": {
+				"id": "string"
+			}
+		},
+		{
+			"customDefinition": false,
+			"defValue": "",
+			"label": "Value",
+			"name": "value",
+			"tooltip": "You can use relative values like +=10, -=20, *=2, /=0.5 or functions like setAlpha, setTint etc.",
+			"type": {
+				"id": "string"
+			}
+		}
+	],
+	"sceneType": "PREFAB",
+	"settings": {
+		"autoImport": true,
+		"compilerOutputLanguage": "TYPE_SCRIPT",
+		"createMethodName": "",
+		"displayName": "Set Property",
+		"exportClass": true,
+		"prefabObjDisplayFmt": "Set \"${property}\" property",
+		"preloadMethodName": "",
+		"preloadPackFiles": []
+	}
+}

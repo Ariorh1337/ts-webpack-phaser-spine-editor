@@ -1,45 +1,78 @@
+import { SpinePlugin } from "@esotericsoftware/spine-phaser";
 import "phaser";
-import "phaser/plugins/spine/dist/SpinePlugin";
 
+import Boot from "game/scenes/Boot";
 import Example from "game/scenes/Example";
-import { array_at, array_flat } from "util/polyfill";
-import Boot from "./scenes/Boot";
+import Preload from "./scenes/Preload";
 
-import { FPS, HEIGHT, WIDTH, lang, setLanguage } from "./globals";
-
-array_at();
-array_flat();
+import { HEIGHT, WIDTH, WIDTH_MIN, setSize } from "./globals";
 
 const config = {
     type: Phaser.WEBGL,
     transparent: true,
     scale: {
         parent: "phaser-game",
-        mode: Phaser.Scale.FIT,
+        mode: Phaser.Scale.NONE,
         autoCenter: Phaser.Scale.CENTER_BOTH,
+        zoom: window.innerHeight / HEIGHT,
     },
     width: WIDTH,
     height: HEIGHT,
-    scene: [Boot, Example],
+    scene: [Boot, Preload, Example],
     physics: {
         default: "arcade",
         arcade: {
             debug: false,
             gravity: { x: 0, y: 0 },
-            fps: FPS,
         },
     },
     plugins: {
         scene: [
             {
-                key: "SpinePlugin",
-                plugin: window.SpinePlugin,
+                key: "spine.SpinePlugin",
+                plugin: SpinePlugin,
                 mapping: "spine",
             },
         ],
     },
     callbacks: {
-        postBoot: function (game: Phaser.Game) {},
+        postBoot: function (game: Phaser.Game) {
+            const resize = () => {
+                const zoom = Math.min(
+                    window.innerHeight / HEIGHT,
+                    window.innerWidth / WIDTH_MIN,
+                );
+
+                game.scale.setZoom(zoom);
+
+                game.scale.setParentSize(window.innerWidth, window.innerHeight);
+                game.scale.updateCenter();
+
+                // Screen Width & Height
+                const w = window.innerWidth / zoom;
+                const h = window.innerHeight / zoom;
+
+                const x = (WIDTH - w) / 2;
+                const y = (HEIGHT - h) / 2;
+
+                const X = (rel: number) => x + w * rel;
+                const Y = (rel: number) => y + h * rel;
+
+                setSize(X, Y);
+
+                game.events.emit("resize", zoom, X, Y);
+            };
+
+            window.addEventListener("resize", resize);
+
+            const offset = innerWidth / innerHeight;
+            if (offset < 0.5634980988593156) {
+                innerHeight = innerWidth / 0.5634980988593156;
+                innerWidth = innerHeight * 0.5634980988593156;
+            }
+
+            resize();
+        },
     },
     autoRound: true,
     desynchronized: true,
@@ -52,7 +85,5 @@ const config = {
 };
 
 window.addEventListener("load", async () => {
-    await setLanguage(lang);
-
     const game = new Phaser.Game(config);
 });

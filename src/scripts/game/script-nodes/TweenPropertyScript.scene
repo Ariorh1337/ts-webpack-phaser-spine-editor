@@ -1,0 +1,142 @@
+{
+	"displayList": [
+		{
+			"components": [],
+			"id": "e93a8e57-fc0f-4d4b-b471-9921d5ddf8e9",
+			"label": "scriptnode_1",
+			"list": [],
+			"type": "ScriptNode"
+		}
+	],
+	"id": "51c79514-c69c-418c-b5d3-9537c9e7ca15",
+	"meta": {
+		"app": "Phaser Editor 2D - Scene Editor",
+		"contentType": "phasereditor2d.core.scene.SceneContentType",
+		"url": "https://phasereditor2d.com",
+		"version": 3
+	},
+	"plainObjects": [],
+	"prefabProperties": [
+		{
+			"customDefinition": false,
+			"defValue": true,
+			"label": "Alive",
+			"name": "alive",
+			"tooltip": "Checkbox to define should it execute once it created",
+			"type": {
+				"id": "boolean"
+			}
+		},
+		{
+			"customDefinition": false,
+			"defValue": "",
+			"label": "Property",
+			"name": "property",
+			"tooltip": "",
+			"type": {
+				"id": "string"
+			}
+		},
+		{
+			"customDefinition": false,
+			"defValue": "",
+			"label": "Value",
+			"name": "value",
+			"tooltip": "",
+			"type": {
+				"id": "string"
+			}
+		},
+		{
+			"customDefinition": false,
+			"defValue": 0,
+			"label": "Duration",
+			"name": "duration",
+			"tooltip": "",
+			"type": {
+				"id": "number"
+			}
+		},
+		{
+			"customDefinition": false,
+			"defValue": 0,
+			"label": "Delay",
+			"name": "delay",
+			"tooltip": "",
+			"type": {
+				"id": "number"
+			}
+		},
+		{
+			"customDefinition": false,
+			"defValue": false,
+			"label": "Yoyo",
+			"name": "yoyo",
+			"tooltip": "",
+			"type": {
+				"id": "boolean"
+			}
+		},
+		{
+			"customDefinition": false,
+			"defValue": "Linear",
+			"label": "Ease",
+			"name": "ease",
+			"tooltip": "",
+			"type": {
+				"id": "string"
+			}
+		},
+		{
+			"customDefinition": false,
+			"defValue": 0,
+			"label": "Repeat",
+			"name": "repeat",
+			"tooltip": "",
+			"type": {
+				"id": "number"
+			}
+		},
+		{
+			"customDefinition": false,
+			"defValue": 0,
+			"label": "Repeat Delay",
+			"name": "repeatDelay",
+			"tooltip": "",
+			"type": {
+				"id": "number"
+			}
+		},
+		{
+			"customDefinition": false,
+			"defValue": false,
+			"label": "On Complete Execute",
+			"name": "onCompleteExecute",
+			"tooltip": "",
+			"type": {
+				"id": "boolean"
+			}
+		},
+		{
+			"customDefinition": false,
+			"defValue": false,
+			"label": "On Repeat Execute",
+			"name": "onRepeatExecute",
+			"tooltip": "",
+			"type": {
+				"id": "boolean"
+			}
+		}
+	],
+	"sceneType": "PREFAB",
+	"settings": {
+		"autoImport": true,
+		"compilerOutputLanguage": "TYPE_SCRIPT",
+		"createMethodName": "",
+		"displayName": "Tween property",
+		"exportClass": true,
+		"prefabObjDisplayFmt": "Tween \"${property}\" property",
+		"preloadMethodName": "",
+		"preloadPackFiles": []
+	}
+}

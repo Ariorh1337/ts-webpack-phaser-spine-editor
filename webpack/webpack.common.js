@@ -15,6 +15,7 @@ module.exports = {
 		modules: ["node_modules", "src"],
 		alias: {
 			'src': path.resolve(__dirname, '../src'),
+			'static': path.resolve(__dirname, '../static'),
 			'game': path.resolve(__dirname, '../src/scripts/game'),
 			'util': path.resolve(__dirname, '../src/scripts/util')
 		}

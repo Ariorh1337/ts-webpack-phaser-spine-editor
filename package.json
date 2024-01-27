@@ -1,5 +1,8 @@
 {
 	"dependencies": {
+		"@esotericsoftware/spine-phaser": "^4.2.23",
+		"@phasereditor2d/scripts-core": "^1.0.7",
+		"@phasereditor2d/scripts-simple-animations": "^1.0.6",
 		"eslint": "^8.56.0",
 		"phaser": "^3.70.0",
 		"worker-loader": "^3.0.8"

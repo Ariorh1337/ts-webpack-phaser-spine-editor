@@ -32,7 +32,7 @@ export function parse(csv: string) {
         return loc;
     } catch (err) {
         console.error(
-            `Something went wrong, check if 1) Path is correct; 2) Csv file is valid. Error: ${err}`
+            `Something went wrong, check if 1) Path is correct; 2) Csv file is valid. Error: ${err}`,
         );
 
         return {};
@@ -41,23 +41,20 @@ export function parse(csv: string) {
 
 let all_langs_dict: Record<string, Record<string, string>>;
 
-export async function init_dictionary(lang: string, path: string) {
-    const csv = await fetch(path).then((res) => res.text());
-    if (!csv) throw new Error("Could not load dictionary");
+export async function init_dictionary(lang: string, data: string) {
+    all_langs_dict = parse(data);
 
-    all_langs_dict = parse(csv);
+    if (!Object.hasOwn(all_langs_dict, lang)) {
+        lang = "en";
+    }
 
-    const prefered_lang_dict = all_langs_dict[lang];
-
-    if (prefered_lang_dict) return prefered_lang_dict;
-
-    return all_langs_dict["en"];
+    return all_langs_dict[lang];
 }
 
 export function update_dictionary(lang: string) {
-    const prefered_lang_dict = all_langs_dict[lang];
-
-    if (prefered_lang_dict) return prefered_lang_dict;
+    if (!Object.hasOwn(all_langs_dict, lang)) {
+        lang = "en";
+    }
 
     return all_langs_dict["en"];
 }
@@ -80,7 +77,7 @@ function CSVToArray(strData: string, strDelimiter = ",") {
             '([^"\\' +
             strDelimiter +
             "\\r\\n]*))",
-        "gi"
+        "gi",
     );
 
     // Create an array to hold our data. Give the array

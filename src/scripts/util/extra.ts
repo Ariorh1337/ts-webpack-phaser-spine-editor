@@ -1,6 +1,6 @@
 export function tween(
     scene: Phaser.Scene,
-    config: object | Phaser.Types.Tweens.TweenBuilderConfig
+    config: object | Phaser.Types.Tweens.TweenBuilderConfig,
 ) {
     return new Promise((resolve) => {
         scene.tweens.add({
@@ -26,4 +26,9 @@ export function transition(scene: Phaser.Scene, option: "Out" | "In") {
     if (option === "In") scene.cameras.main.fadeIn(duration, ...params);
 
     return delay(scene, duration);
+}
+
+export function ObjectPath(path, obj = {}, separator = ".") {
+    var properties = Array.isArray(path) ? path : path.split(separator);
+    return properties.reduce((prev, curr) => prev?.[curr], obj);
 }

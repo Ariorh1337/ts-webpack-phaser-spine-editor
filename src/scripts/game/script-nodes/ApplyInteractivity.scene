@@ -1,0 +1,42 @@
+{
+	"displayList": [
+		{
+			"components": [],
+			"id": "e93a8e57-fc0f-4d4b-b471-9922d5ddf8e9",
+			"label": "scriptnode_1",
+			"list": [],
+			"type": "ScriptNode"
+		}
+	],
+	"id": "51c79514-c69c-418c-b5d3-9137c9e7ca15",
+	"meta": {
+		"app": "Phaser Editor 2D - Scene Editor",
+		"contentType": "phasereditor2d.core.scene.SceneContentType",
+		"url": "https://phasereditor2d.com",
+		"version": 3
+	},
+	"plainObjects": [],
+	"prefabProperties": [
+		{
+			"customDefinition": false,
+			"defValue": true,
+			"label": "Cursor pointer",
+			"name": "cursor",
+			"tooltip": "Set the cursor to a pointer when over this object.",
+			"type": {
+				"id": "boolean"
+			}
+		}
+	],
+	"sceneType": "PREFAB",
+	"settings": {
+		"autoImport": true,
+		"compilerOutputLanguage": "TYPE_SCRIPT",
+		"createMethodName": "",
+		"displayName": "Apply Interactivity",
+		"exportClass": true,
+		"prefabObjDisplayFmt": "Interactive",
+		"preloadMethodName": "",
+		"preloadPackFiles": []
+	}
+}
