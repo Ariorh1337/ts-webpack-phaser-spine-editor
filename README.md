@@ -19,25 +19,35 @@ Phaser:
 -   https://rexrainbow.github.io/phaser3-rex-notes/docs/site/
 -   https://photonstorm.github.io/phaser3-docs/
 
+Phaser Editor 2d:
 
-## Code structure
+-   https://help-v3.phasereditor2d.com/
 
-All assets need to be inside the **/src/assets** folder.
-All game code lies inside the **/src/scripts** folder.
+Esoteric Software - Spine:
+
+-   https://ru.esotericsoftware.com/spine-phaser
+
+## Structure
+
+-   All assets need to be inside the **/static/assets** folder.
+-   All game code lies inside the **/src/scripts/game** folder.
+-   All webworker code lies inside the **/src/scripts/engine** folder.
+
+### Code
 
 The code is divided into two parts:
-**/src/engine/** - this part is responsible for physics.
-In the current implementation, physics works inside the WebWorker, this is done in order to minimize losses during multiple calculations.
 
-**/src/game/** - this part is responsible for the visual part.
-The structure of this part should be familiar to you, inside you will see the scene files as well as additional accompanying code.
+**/src/scripts/engine** - This part is responsible for running heavy and low-performance code, such as physics. It runs inside the WebWorker, this is done in order to minimize losses during multiple calculations.
 
-## Resources
+**/src/scripts/game** - The structure of this part should be familiar to you, inside you will see the scene files as well as additional accompanying code.
 
-All resources are stored in the **/src/assets** folder. At build time, the **/src/assets** folder is copied directly to **/dist**.
-The configuration file for the game is located: **/src/configs**
-Top-level property like "image, spine, audio, aseprite" are the type name and are used by the Phaser loader, do not change the names of these property and objects in any case, otherwise the load will break.
+### Resources
 
+All resources are stored in the **/static/assets** folder.
+
+At build time, the **/src/assets** folder is copied directly to **/dist**.
+
+The configuration file is assembled using the editor. In case of loading fonts, please use the 'binary' type and also make sure that you have specified the font extension in the key. See the example of loading the 'Uni_Sans_Heavy.otf' font.
 
 ### Questions
 
@@ -47,7 +57,7 @@ Please make sure that the files you added have different names. This is importan
 
 -   I added new spine animations and the game broke.
 
-Most likely you made a mistake with the spine version, all animations must be exported from version 3.8
+Most likely you made a mistake with the spine version, all animations must be exported from version 4.1
 
 ## PWA
 
