@@ -5,9 +5,9 @@
 import Phaser from "phaser";
 import { SkinsAndAnimationBoundsProvider } from "@esotericsoftware/spine-phaser";
 import { SpineGameObject } from "@esotericsoftware/spine-phaser";
-import { OnAwakeScript } from "@phasereditor2d/scripts-core";
-import SetProperty from "../script-nodes/SetProperty";
+import StartAnimationComp from "../components/StartAnimationComp";
 import TweenPropertyScript from "../script-nodes/TweenPropertyScript";
+import SetProperty from "../script-nodes/SetProperty";
 import { OnEventScript } from "@phasereditor2d/scripts-core";
 import ApplyInteractivity from "../script-nodes/ApplyInteractivity";
 /* START-USER-IMPORTS */
@@ -44,12 +44,6 @@ export default class Example extends Phaser.Scene {
 		goblin.animationStateData.setMix("walk", "walk", 0);
 		goblin.scaleX = 0.5;
 		goblin.scaleY = 0.5;
-
-		// onAwakeScript
-		const onAwakeScript = new OnAwakeScript(goblin);
-
-		// setProperty_2
-		const setProperty_2 = new SetProperty(onAwakeScript);
 
 		// hand
 		const hand = this.add.image(1024, 149, "hand");
@@ -88,10 +82,9 @@ export default class Example extends Phaser.Scene {
 		bitmaptext_1.align = 1;
 		bitmaptext_1.maxWidth = 3000;
 
-		// setProperty_2 (prefab fields)
-		setProperty_2.path = "animationState";
-		setProperty_2.property = "setAnimation";
-		setProperty_2.value = "0, walk, true";
+		// goblin (components)
+		const goblinStartAnimationComp = new StartAnimationComp(goblin);
+		goblinStartAnimationComp.animationName = "walk";
 
 		// tween_y (prefab fields)
 		tween_y.property = "y";
